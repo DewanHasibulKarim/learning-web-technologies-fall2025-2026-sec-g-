@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>Simple Email Form</title>
+</head>
+
+<body>
+
+<h1>Email</h1>
+
+<form onsubmit="return validateEmail()">
+    <input type="text" id="email" placeholder="Enter your email">
+    <button type="submit">Submit</button>
+    <h2>Hint: sample@example.com</h2>
+</form>
+
+</h3 id="error" style="color:red;"></h3>
+
+<script>
+function validateEmail() {
+    let email = document.getElementById("email").value;
+    let error = document.getElementById("error");
+
+    if (email.trim() === "") {
+        error.textContent = "Email cannot be empty.";
+        return false;
+    }
+
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        error.textContent = "Please enter a valid email address.";
+        return false;
+    }
+
+    error.textContent = "";
+    alert("Email submitted successfully!");
+    return true;
+}
+</script>
+
+</body>
+</html>
